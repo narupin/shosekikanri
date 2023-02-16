@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>確認</title>
+<link th:href="@{/css/confirm.css}" rel="stylesheet">
+</head>
+<body>
+	<a th:href="@{/}">TOP</a>	
+	<div th:object="${contact}">
+		<p>お名前:<span th:text="*{name}">ダミー</span></p>
+		<p>メールアドレス:<span th:text="*{email}">ダミー</span></p>
+		<p>お問い合わせ内容:<span th:text="*{message}">ダミー</span></p>
+		<p>上記でよろしければ送信ボタンを押してください。</p>
+		<form th:action="@{/contact/complete}" th:method="post">
+			<input type="hidden" th:field="*{name}" th:value="*{name}">
+			<input type="hidden" th:field="*{email}" th:value="*{email}">
+			<input type="hidden" th:field="*{message}" th:value="*{message}">
+			<button type="submit">送信</button>
+		</form>
+		<form th:action="@{/contact/}" th:method="post">
+			<input type="hidden" th:field="*{name}" th:value="*{name}">
+			<input type="hidden" th:field="*{email}" th:value="*{email}">
+			<input type="hidden" th:field="*{message}" th:value="*{message}">
+			<button type="submit">修正</button>
+		</form>	
+	</div>
+</body>
+</html>

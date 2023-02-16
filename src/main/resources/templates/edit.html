@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>編集</title>
+<!-- css読み込み -->
+<link th:href="@{/css/edit.css}" rel="stylesheet">
+</head>
+<body>
+	<a th:href="@{/}">戻る</a>
+	<h1>編集</h1>
+	<form th:action="@{/edit}" th:method="post" th:object="${book}">
+		<input type="hidden" th:field="*{id}" th:value="*{id}">
+		<p>タイトル:<input type="text" th:errorclass="is-invalid" th:field="*{title}"></p>
+		<p class="invalid-feedback" th:errors="*{title}"></p>
+		<p>著者:<input type="text" th:errorclass="is-invalid" th:field="*{author}"></p>
+		<p class="invalid-feedback" th:errors="*{author}"></p>
+		<button type="submit">登録</button>
+	</form>
+</body>
+</html>

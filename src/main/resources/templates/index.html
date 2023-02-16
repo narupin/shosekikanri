@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>書籍管理アプリ</title>
+<!-- css読み込み -->
+<link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+	<a th:href="@{/contact/}">お問い合わせ</a>
+	<h1>書籍管理アプリ</h1>
+	<form th:action="@{/}" th:method="post">
+		<p>タイトル:<input type="text" th:errorclass="is-invalid" th:field="${book.title}" placeholder="タイトルを入力"></p>
+		<p class="invalid-feedback" th:errors="${book.title}"></p>
+		<p>著者:<input type="text" th:errorclass="is-invalid" th:field="${book.author}" placeholder="著者を入力"></p>
+		<p class="invalid-feedback" th:errors="${book.author}"></p>
+		<button type="submit">登録</button>
+	</form>
+	<h1>書籍一覧</h1>
+	<form th:action="@{/search/title}">
+		<input type="text" name="title" placeholder="タイトルを入力">
+		<button type="submit">タイトルで検索</button>
+	</form>
+	<form th:action="@{/search/author}">
+		<input type="text" name="author" placeholder="著者を入力">
+		<button type="submit">著者で検索</button>
+	</form>
+	<table border="1">
+		<tr>
+			<th>タイトル</th>
+			<th>著者</th>
+			<th>編集</th>
+			<th>削除</th>
+		</tr>
+		<tr th:each="book:${books}" th:object="${book}">
+			<td th:text="*{title}"></td>
+			<td th:text="*{author}"></td>
+			<td>
+				<form th:action="@{/{id}(id=*{id})}" th:method="put">
+					<button type="submit">編集</button>
+				</form>
+			</td>
+			<td>
+				<form th:action="@{/{id}(id=*{id})}" th:method="delete">
+					<button type="submit">削除</button>
+				</form>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
