@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>お問い合わせフォーム</title>
+<!--/* bootstrapのcss読み込み */-->
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
 <link th:href="@{/css/contact.css}" rel="stylesheet">
 </head>
 <body>
@@ -17,5 +19,7 @@
 		<p class="invalid-feedback" th:errors="*{message}"></p>
 		<button type="submit">確認</button>
 	</form>
+<!--/* bootstrapのjs読み込み */-->
+<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
 </body>
 </html>
