@@ -1,0 +1,41 @@
+@charset "UTF-8";@charset "UTF-8";
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+.invalid-feedback {
+	display: block;
+}
+
+header {
+	width: auto;
+	height: 50px;
+	background-color: #F7DEB9;
+}
+
+
+main {
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.title {
+	font-size: 35px;
+	margin: 20px 0;
+}
+
+
+.login {
+	width: 500px;
+	background-color: #FCEDB0;
+	border: solid 2px #E0BC9D;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.form-label {
+    margin-bottom: 0.2rem;
+}
