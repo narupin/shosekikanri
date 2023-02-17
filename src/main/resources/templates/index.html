@@ -16,10 +16,10 @@
 <body>
 	<header>
 		<a class="btn btn-warning" th:href="@{/}" role="button">TOP</a>
-		<a class="btn btn-warning" th:href="@{/contact/}" role="button">お問い合わせ</a>
 		<form th:action="@{/logout}" method="post">
 			<button class="btn btn-warning" type="submit">ログアウト</button>
 		</form>
+		<a class="btn btn-warning" th:href="@{/contact/}" role="button">お問い合わせ</a>
 	</header>
 	<main>
 		<h1 class="title">書籍管理アプリ</h1>
