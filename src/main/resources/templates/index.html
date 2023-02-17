@@ -2,53 +2,86 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>書籍管理アプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 <!--/* bootstrapのcss読み込み */-->
 <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
 <!--/* css読み込み */-->
 <link th:href="@{/css/index.css}" rel="stylesheet">
 </head>
 <body>
-	<a th:href="@{/contact/}">お問い合わせ</a>
-	<h1>書籍管理アプリ</h1>
-	<form th:action="@{/}" th:method="post">
-		<p>タイトル:<input type="text" th:errorclass="is-invalid" th:field="${book.title}" placeholder="タイトルを入力"></p>
-		<p class="invalid-feedback" th:errors="${book.title}"></p>
-		<p>著者:<input type="text" th:errorclass="is-invalid" th:field="${book.author}" placeholder="著者を入力"></p>
-		<p class="invalid-feedback" th:errors="${book.author}"></p>
-		<button type="submit">登録</button>
-	</form>
-	<h1>書籍一覧</h1>
-	<form th:action="@{/search/title}">
-		<input type="text" name="title" placeholder="タイトルを入力">
-		<button type="submit">タイトルで検索</button>
-	</form>
-	<form th:action="@{/search/author}">
-		<input type="text" name="author" placeholder="著者を入力">
-		<button type="submit">著者で検索</button>
-	</form>
-	<table>
-		<tr>
-			<th>タイトル</th>
-			<th>著者</th>
-			<th>編集</th>
-			<th>削除</th>
-		</tr>
-		<tr th:each="book:${books}" th:object="${book}">
-			<td th:text="*{title}"></td>
-			<td th:text="*{author}"></td>
-			<td>
-				<form th:action="@{/{id}(id=*{id})}" th:method="put">
-					<button type="submit">編集</button>
+	<header>
+		<a class="btn btn-warning" th:href="@{/}" role="button">TOP</a>
+		<a class="btn btn-warning" th:href="@{/contact/}" role="button">お問い合わせ</a>
+	</header>
+	<main>
+		<h1 class="title">書籍管理アプリ</h1>
+		<section class="register">
+			<h2>書籍を登録する</h2>
+			<form th:action="@{/}" th:method="post">
+				<div class="mb-2">
+					<label class="form-label">タイトル</label>
+					<input class="form-control" type="text" th:errorclass="is-invalid" th:field="${book.title}" placeholder="タイトルを入力">
+					<div class="invalid-feedback" th:errors="${book.title}"></div>
+				</div>
+				<div class="mb-2">
+					<label class="form-label">著者</label>
+					<input class="form-control" type="text" th:errorclass="is-invalid" th:field="${book.author}" placeholder="著者を入力">
+					<div class="invalid-feedback" th:errors="${book.author}"></div>
+				</div>
+				<button class="btn btn-warning" type="submit">登録</button>
+			</form>
+		</section>
+		<section class="search">
+			<h2>書籍を検索する</h2>
+			<div class="mb-2">
+				<form th:action="@{/search/title}">
+					<input class="form-control mb-1" type="text" name="title" placeholder="タイトルを入力">
+					<button class="btn btn-warning" type="submit">タイトルで検索</button>
 				</form>
-			</td>
-			<td>
-				<form th:action="@{/{id}(id=*{id})}" th:method="delete">
-					<button type="submit">削除</button>
+			</div>
+			<div class="mb-2">
+				<form th:action="@{/search/author}">
+					<input class="form-control mb-1" type="text" name="author" placeholder="著者を入力">
+					<button class="btn btn-warning" type="submit">著者で検索</button>
 				</form>
-			</td>
-		</tr>
-	</table>
+			</div>
+		</section>
+		<section class="book-list">
+			<h2>書籍一覧</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="th-1">タイトル</th>
+						<th class="th-2">著者</th>
+						<th class="th-3"></th>
+						<th class="th-3"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="book:${books}" th:object="${book}">
+						<td th:text="*{title}"></td>
+						<td th:text="*{author}"></td>
+						<td>
+							<form class="form" th:action="@{/{id}(id=*{id})}" th:method="put">
+								<button class="btn btn-warning" type="submit">編集</button>
+							</form>
+						</td>
+						<td>
+							<form class="form" th:action="@{/{id}(id=*{id})}" th:method="delete">
+								<button class="btn btn-danger" type="submit">削除</button>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+		</main>
+	<footer>
+	</footer>
 <!--/* bootstrapのjs読み込み */-->
 <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
 </body>

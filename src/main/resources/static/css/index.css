@@ -1,5 +1,88 @@
 @charset "UTF-8";
 
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
 .invalid-feedback {
 	display: block;
+}
+
+header {
+	width: auto;
+	height: 50px;
+	background-color: #F7DEB9;
+}
+
+header > a {
+	display: block;
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+main {
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.title {
+	font-size: 35px;
+	margin: 20px 0;
+}
+
+h2 {
+	font-size: 22px;
+	margin-bottom: 10px;
+}
+
+.register {
+	width: 500px;
+	background-color: #FCEDB0;
+	border: solid 2px #E0BC9D;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.form-label {
+    margin-bottom: 0.2rem;
+}
+
+.search {
+	width: 500px;
+	background-color: #FCEDB0;
+	border: solid 2px #E0BC9D;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+.book-list {
+	width: 500px;
+	background-color: #FCEDB0;
+	border: solid 2px #E0BC9D;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.table {
+	width: 476px;
+	table-layout: fixed;
+	word-wrap: break-word;
+	border-color: #E0BC9D;
+}
+
+.form {
+	width: 63px;
+}
+
+.th-1 {
+	width: 40%;
+}
+
+.th-3 {
+	width: 13%;
 }

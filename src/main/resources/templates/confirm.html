@@ -2,31 +2,53 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>確認</title>
 <!--/* bootstrapのcss読み込み */-->
 <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
 <link th:href="@{/css/confirm.css}" rel="stylesheet">
 </head>
 <body>
-	<a th:href="@{/}">TOP</a>	
-	<div th:object="${contact}">
-		<p>お名前:<span th:text="*{name}">ダミー</span></p>
-		<p>メールアドレス:<span th:text="*{email}">ダミー</span></p>
-		<p>お問い合わせ内容:<span th:text="*{message}">ダミー</span></p>
-		<p>上記でよろしければ送信ボタンを押してください。</p>
-		<form th:action="@{/contact/complete}" th:method="post">
-			<input type="hidden" th:field="*{name}" th:value="*{name}">
-			<input type="hidden" th:field="*{email}" th:value="*{email}">
-			<input type="hidden" th:field="*{message}" th:value="*{message}">
-			<button type="submit">送信</button>
-		</form>
-		<form th:action="@{/contact/}" th:method="post">
-			<input type="hidden" th:field="*{name}" th:value="*{name}">
-			<input type="hidden" th:field="*{email}" th:value="*{email}">
-			<input type="hidden" th:field="*{message}" th:value="*{message}">
-			<button type="submit">修正</button>
-		</form>	
-	</div>
+	<header>
+		<a class="btn btn-warning" th:href="@{/}" role="button">TOP</a>
+	</header>
+	<main>
+		<h1 class="title">入力内容の確認</h1>
+		<section class="contact">
+			<div th:object="${contact}">
+				<div class="mb-2">
+					<label class="form-label">お名前</label><br>
+					<input type="text" readonly class="form-control-plaintext"  th:value="*{name}">
+				</div>
+				<div class="mb-2">
+					<label class="form-label">メールアドレス</label><br>
+					<input type="text" readonly class="form-control-plaintext"  th:value="*{email}">
+				</div>
+				<div class="mb-2">
+					<label class="form-label">お問い合わせ内容</label><br>
+					<input type="text" readonly class="form-control-plaintext"  th:value="*{message}">
+				</div>
+				<br>
+				<p>上記でよろしければ送信ボタンを押してください。</p>
+				<div class="form">
+					<form th:action="@{/contact/complete}" th:method="post">
+						<input type="hidden" th:field="*{name}" th:value="*{name}">
+						<input type="hidden" th:field="*{email}" th:value="*{email}">
+						<input type="hidden" th:field="*{message}" th:value="*{message}">
+						<button class="btn btn-warning" type="submit">送信</button>
+					</form>
+					<form th:action="@{/contact/}" th:method="post">
+						<input type="hidden" th:field="*{name}" th:value="*{name}">
+						<input type="hidden" th:field="*{email}" th:value="*{email}">
+						<input type="hidden" th:field="*{message}" th:value="*{message}">
+						<button class="btn btn-warning" type="submit">修正</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer>
+	</footer>
 <!--/* bootstrapのjs読み込み */-->
 <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
 </body>

@@ -2,23 +2,42 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>お問い合わせフォーム</title>
 <!--/* bootstrapのcss読み込み */-->
 <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
 <link th:href="@{/css/contact.css}" rel="stylesheet">
 </head>
 <body>
-	<a th:href="@{/}">TOP</a>
-	<h1>お問い合わせフォーム</h1>
-	<form th:action="@{/contact/confirm}" th:method="post" th:object="${contact}">
-		<p>お名前:<input type="text" th:errorclass="is-invalid" th:field="*{name}" placeholder="2文字以上20文字以内"></p>
-		<p class="invalid-feedback" th:errors="*{name}"></p>
-		<p>メールアドレス:<input type="text" th:errorclass="is-invalid" th:field="*{email}"></p>
-		<p class="invalid-feedback" th:errors="*{email}"></p>
-		<p>お問い合わせ内容:<textarea th:errorclass="is-invalid" th:field="*{message}" placeholder="10文字以上255文字以内"></textarea></p>
-		<p class="invalid-feedback" th:errors="*{message}"></p>
-		<button type="submit">確認</button>
-	</form>
+	<header>
+		<a class="btn btn-warning" th:href="@{/}" role="button">TOP</a>
+	</header>
+	<main>
+		<h1 class="title">お問い合わせフォーム</h1>
+		<section class="contact">
+			<form th:action="@{/contact/confirm}" th:method="post" th:object="${contact}">
+				<div class="mb-2">
+					<label class="form-label">お名前</label>
+					<input class="form-control" type="text" th:errorclass="is-invalid" th:field="*{name}" placeholder="2文字以上20文字以内">
+					<p class="invalid-feedback" th:errors="*{name}"></p>
+				</div>
+				<div class="mb-2">
+					<label class="form-label">メールアドレス</label>
+					<input class="form-control" type="text" th:errorclass="is-invalid" th:field="*{email}">
+					<p class="invalid-feedback" th:errors="*{email}"></p>
+				</div>
+				<div class="mb-2">
+					<label class="form-label">お問い合わせ内容</label>
+					<textarea class="form-control" th:errorclass="is-invalid" th:field="*{message}" placeholder="10文字以上255文字以内"></textarea>
+					<p class="invalid-feedback" th:errors="*{message}"></p>
+				</div>
+				<button class="btn btn-warning" type="submit">確認</button>
+				
+			</form>
+		</section>
+	</main>
+	<footer>
+	</footer>
 <!--/* bootstrapのjs読み込み */-->
 <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
 </body>

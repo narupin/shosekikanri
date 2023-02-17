@@ -2,6 +2,7 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>登録完了</title>
 <!--/* bootstrapのcss読み込み */-->
 <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
@@ -9,9 +10,15 @@
 <link th:href="@{/css/complete.css}" rel="stylesheet">
 </head>
 <body>
-	<a th:href="@{/}">TOP</a>
-	<h1>お問い合わせ完了</h1>
-	<p>お問い合わせを送信しました。</p>
+	<header>
+		<a class="btn btn-warning" th:href="@{/}" role="button">TOP</a>
+	</header>
+	<main>
+		<h1 class="title">お問い合わせ完了</h1>
+		<p>お問い合わせを送信しました。</p>
+	</main>
+	<footer>
+	</footer>
 <!--/* bootstrapのjs読み込み */-->
 <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
 </body>

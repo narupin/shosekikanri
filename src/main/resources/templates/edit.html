@@ -2,6 +2,7 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>編集</title>
 <!--/* bootstrapのcss読み込み */-->
 <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
@@ -9,16 +10,30 @@
 <link th:href="@{/css/edit.css}" rel="stylesheet">
 </head>
 <body>
-	<a th:href="@{/}">戻る</a>
-	<h1>編集</h1>
-	<form th:action="@{/edit}" th:method="post" th:object="${book}">
-		<input type="hidden" th:field="*{id}" th:value="*{id}">
-		<p>タイトル:<input type="text" th:errorclass="is-invalid" th:field="*{title}"></p>
-		<p class="invalid-feedback" th:errors="*{title}"></p>
-		<p>著者:<input type="text" th:errorclass="is-invalid" th:field="*{author}"></p>
-		<p class="invalid-feedback" th:errors="*{author}"></p>
-		<button type="submit">登録</button>
-	</form>
+	<header>
+		<a class="btn btn-warning" th:href="@{/}" role="button">TOP</a>
+	</header>
+	<main>
+		<h1 class="title">編集ページ</h1>
+		<section class="edit">
+			<form th:action="@{/edit}" th:method="post" th:object="${book}">
+				<div class="mb-2">
+					<input type="hidden" th:field="*{id}" th:value="*{id}">
+					<label class="form-label">タイトル</label>
+					<input class="form-control" type="text" th:errorclass="is-invalid" th:field="*{title}"></p>
+					<p class="invalid-feedback" th:errors="*{title}"></p>
+				</div>
+				<div class="mb-2">
+					<label class="form-label">著者</label>
+					<input class="form-control" type="text" th:errorclass="is-invalid" th:field="*{author}"></p>
+					<p class="invalid-feedback" th:errors="*{author}"></p>
+				</div>
+				<button class="btn btn-warning" type="submit">登録</button>
+			</form>
+		</section>
+	</main>
+	<footer>
+	</footer>
 <!--/* bootstrapのjs読み込み */-->
 <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
 </body>

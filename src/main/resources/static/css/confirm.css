@@ -1,5 +1,49 @@
 @charset "UTF-8";
 
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
 .invalid-feedback {
 	display: block;
+}
+
+header {
+	width: auto;
+	height: 50px;
+	background-color: #F7DEB9;
+}
+
+header > a {
+	display: block;
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+main {
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.title {
+	margin-top: 20px;
+}
+
+.contact {
+	width: 500px;
+	background-color: #FCEDB0;
+	border: solid 2px #E0BC9D;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.form-label {
+    margin-bottom: 0.2rem;
+}
+
+.form {
+	display: inline-flex;
+	column-gap: 10px;
 }
