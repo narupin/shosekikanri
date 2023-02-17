@@ -27,6 +27,7 @@ public class SecurityConfig {
 		http
 			.authorizeHttpRequests((requests) -> requests
 					.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+					.requestMatchers("/h2-console/**").permitAll()	// H2DBデバッグ用
 //					.requestMatchers("/","/home").permitAll()
 					.anyRequest().authenticated()
 			)
@@ -35,6 +36,10 @@ public class SecurityConfig {
 			)
 			.logout((logout) -> logout.permitAll()
 			);
+		
+		http.csrf().disable();	// H2DBデバッグ用
+		http.headers().frameOptions().disable(); // H2DBデバッグ用
+		
 		return http.build();
 	}
 	
