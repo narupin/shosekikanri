@@ -28,7 +28,7 @@ public class SecurityConfig {
 			.authorizeHttpRequests((requests) -> requests
 					.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 					.requestMatchers("/h2-console/**").permitAll()	// H2DBデバッグ用
-//					.requestMatchers("/","/home").permitAll()
+					.requestMatchers("/error").permitAll()
 					.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
