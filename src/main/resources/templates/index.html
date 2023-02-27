@@ -22,6 +22,17 @@
 		<a class="btn btn-warning" th:href="@{/contact/}" role="button">お問い合わせ</a>
 	</header>
 	<main>
+		<div sec:authorize="authenticated">ようこそ
+			<span sec:authentication="principal.loginUser.name">ユーザー</span> さん
+		</div>
+		<ul>
+			<li sec:authorize="hasRole('GENERAL')">
+				<a th:href="@{/general}">一般ユーザーページへ</a>
+			</li>
+			<li sec:authorize-url="/admin">
+				<a th:href="@{/admin}">管理ユーザーページへ</a>
+			</li>
+		</ul>
 		<h1 class="title">書籍管理アプリ</h1>
 		<section class="register">
 			<h2>書籍を登録する</h2>
